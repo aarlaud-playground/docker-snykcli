@@ -12,6 +12,7 @@ RUN apk update && \
         nodejs && \
     pip install requests && \
     npm install codefresh -g && \
+    npm install snyk -g && \
     chmod +x /usr/local/bin/snyk-linux
 
 COPY scripts/snyk-cli.py /snyk-cli.py

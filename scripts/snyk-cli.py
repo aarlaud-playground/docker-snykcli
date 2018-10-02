@@ -18,10 +18,13 @@ def main(docker_command):
     proc = subprocess.Popen(docker_command, shell=True, stdout=subprocess.PIPE)
     out, err = proc.communicate()
     docker_image_id = out.decode("utf-8").strip('\n')
+    print("image")
+    print(docker_image_id)
+    print("end of image")
 
     # Base twistcli commnad to scan images
     #snykcli_base_command = '/usr/local/bin/snyk-linux test https://github.com/aarlaud-snyk/github-stats'
-    snykcli_base_command = 'docker images'
+    snykcli_base_command = 'snyk test --docker node:10-alpine --org=aarlaud-snyk-demo'
 
     proc = subprocess.Popen(snykcli_base_command, shell=True, stdout=subprocess.PIPE)
     stdout = proc.communicate()[0].decode('utf-8').strip('\n')
