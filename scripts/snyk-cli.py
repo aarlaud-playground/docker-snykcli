@@ -16,8 +16,8 @@ def main(docker_image_to_test):
     snyk_token = os.getenv('SNYK_TOKEN')
     snyk_org = os.getenv('SNYK_ORG')
 
-    # proc = subprocess.Popen(docker_command, shell=True, stdout=subprocess.PIPE)
-    # out, err = proc.communicate()
+    proc = subprocess.Popen("docker pull "+docker_image_to_test, shell=True, stdout=subprocess.PIPE)
+    out, err = proc.communicate()
     # docker_image_id = out.decode("utf-8").strip('\n')
     # print("image")
     # print(docker_image_id)
