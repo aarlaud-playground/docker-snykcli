@@ -34,8 +34,8 @@ def main(docker_image_to_test):
     snykcli_exec = ' '\
     .join([snykcli_base_command, docker_image_to_test, snykcli_org_option])
 
-    proc = subprocess.Popen(snykcli_base_command, shell=True, stdout=subprocess.PIPE)
-    stdout = proc.communicate()[0].decode('utf-8').strip('\n')
+    proc = subprocess.Popen(snykcli_exec, shell=True, stdout=subprocess.PIPE)
+    stdout = proc.communicate()
 
     #
     #
