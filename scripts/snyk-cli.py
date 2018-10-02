@@ -1,5 +1,19 @@
+import json
+import os
+import re
+import requests
+import sys
+import subprocess
+import tarfile
 
-    vulnerability_threshold = os.getenv('SNYK_TOKEN')
+def main(docker_command):
+
+    proc = subprocess.Popen(docker_command, shell=True, stdout=subprocess.PIPE)
+    out, err = proc.communicate()
+    docker_image_id = out.decode("utf-8").strip('\n')
+
+    
+    snyk_token = os.getenv('SNYK_TOKEN')
 
     proc = subprocess.Popen(docker_command, shell=True, stdout=subprocess.PIPE)
     out, err = proc.communicate()
