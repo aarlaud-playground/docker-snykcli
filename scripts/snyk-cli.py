@@ -12,15 +12,12 @@ def main(docker_command):
     out, err = proc.communicate()
     docker_image_id = out.decode("utf-8").strip('\n')
 
-    
+
     snyk_token = os.getenv('SNYK_TOKEN')
 
     proc = subprocess.Popen(docker_command, shell=True, stdout=subprocess.PIPE)
     out, err = proc.communicate()
     docker_image_id = out.decode("utf-8").strip('\n')
-
-    # Determine Protocol
-    console_protocol = 'https' if tlscacert else 'http'
 
     # Base twistcli commnad to scan images
     snykcli_base_command = 'snyk test https://github.com/aarlaud-snyk/github-stats'
