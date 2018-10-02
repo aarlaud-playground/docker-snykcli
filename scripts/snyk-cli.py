@@ -20,7 +20,7 @@ def main(docker_command):
     docker_image_id = out.decode("utf-8").strip('\n')
 
     # Base twistcli commnad to scan images
-    snykcli_base_command = 'snyk test https://github.com/aarlaud-snyk/github-stats'
+    snykcli_base_command = '/usr/local/bin/snyk-linux test https://github.com/aarlaud-snyk/github-stats'
 
     proc = subprocess.Popen(snykcli_base_command, shell=True, stdout=subprocess.PIPE)
     stdout = proc.communicate()[0].decode('utf-8').strip('\n')
