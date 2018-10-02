@@ -14,6 +14,6 @@ RUN apk update && \
     npm install codefresh -g && \
     chmod +x /usr/local/bin/snyk-linux
 
-COPY script/snyk-cli.py /snyk-cli.py
+COPY scripts/snyk-cli.py /snyk-cli.py
 
 CMD [""]
